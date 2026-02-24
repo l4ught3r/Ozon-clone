@@ -1,4 +1,5 @@
 'use client'
+import cn from 'clsx'
 import { LayoutGrid, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,9 +7,9 @@ import { headerMenu } from './header-menu.data'
 
 export function Header() {
 	return (
-		<header className='flex items-center gap-4'>
+		<header className='grid grid-cols-[1fr_1fr_7fr_2fr] gap-5 items-center mt-3 mx-5'>
 			<Image
-				src='/logo.png'
+				src='/ozon.png'
 				alt='Ozone Logo'
 				width={120}
 				height={60}
@@ -29,12 +30,22 @@ export function Header() {
 					<Search color='#fff' />
 				</button>
 			</div>
-			{headerMenu.map(item => (
-				<Link
-					key={item.title}
-					href={item.href}
-				/>
-			))}
+			<div className='flex gap-5 items-center ml-2'>
+				{headerMenu.map((item, index) => (
+					<Link
+						key={item.title}
+						href={item.href}
+						className={cn(
+							'flex items-center flex-col transition-colors hover:opacity-100 opacity-50',
+							index === 0 && 'opacity-100'
+						)}
+					>
+						<item.icon size={20} />
+
+						<span className='text-sm font-medium'>{item.title}</span>
+					</Link>
+				))}
+			</div>
 		</header>
 	)
 }
