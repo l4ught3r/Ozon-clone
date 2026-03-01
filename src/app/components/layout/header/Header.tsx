@@ -7,16 +7,17 @@ import { headerMenu } from './header-menu.data'
 
 export function Header() {
 	return (
-		<header className='grid grid-cols-[2fr_7fr_2.3fr] gap-7 items-center mt-3 mx-5'>
+		<header className='grid grid-cols-[2fr_7fr_2.3fr] gap-7 items-center mt-3 mr-2'>
 			<div className='flex items-center gap-7'>
-				<Image
-					src='/ozon.png'
-					alt='Ozone Logo'
-					width={120}
-					height={60}
-					className='h-auto w-auto'
-				/>
-
+				<Link href='/'>
+					<Image
+						src='/ozon-logo.svg'
+						alt='Ozone Logo'
+						width={120}
+						height={60}
+						unoptimized
+					/>
+				</Link>
 				<button className='bg-primary rounded-md p-2 text-white flex items-center gap-2 font-medium'>
 					<LayoutGrid />
 					<span>Каталог</span>

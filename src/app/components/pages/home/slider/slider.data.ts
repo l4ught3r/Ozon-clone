@@ -7,4 +7,4 @@ export const SLIDES = [
 		id: 2,
 		image: '/slider-2.png'
 	}
-]
+] as const
