@@ -1,8 +1,19 @@
+'use client'
 import cn from 'clsx'
 import { Dot } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { LanguageSwitcher } from '../language-swticher/LanguageSwitcher'
+
 import { topMenu } from './top-menu.data'
+const DynamicLanguageSwitcher = dynamic(
+	() =>
+		import('./language-switcher/LanguageSwitcher').then(
+			mod => mod.LanguageSwitcher
+		),
+	{
+		ssr: false
+	}
+)
 
 export function TopMenu() {
 	return (
@@ -35,7 +46,7 @@ export function TopMenu() {
 					<button className='text-primary font-semibold'>Укажите адрес</button>
 				</div>
 				<div>
-					<LanguageSwitcher />
+					<DynamicLanguageSwitcher />
 				</div>
 			</div>
 		</div>

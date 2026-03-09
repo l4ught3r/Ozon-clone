@@ -1,10 +1,10 @@
 export const LANGUAGES = [
 	{
-		flag: 'ru❤',
+		flag: '/russia.png',
 		code: 'ru'
 	},
 	{
-		flag: '🇺🇸❤',
+		flag: '/united-states.png',
 		code: 'en'
 	} as const
 ]

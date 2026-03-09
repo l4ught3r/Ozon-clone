@@ -1,11 +1,13 @@
 'use client'
 import cn from 'clsx'
 import { LayoutGrid, Search } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import { headerMenu } from './header-menu.data'
 
 export function Header() {
+	const t = useTranslations('header')
 	return (
 		<header className='grid grid-cols-[2fr_7fr_2.3fr] gap-7 items-center mt-3 mr-2'>
 			<div className='flex items-center gap-7'>
@@ -20,7 +22,7 @@ export function Header() {
 				</Link>
 				<button className='bg-primary rounded-md p-2 text-white flex items-center gap-2 font-medium'>
 					<LayoutGrid />
-					<span>Каталог</span>
+					<span>{t('catalogTitle')}</span>
 				</button>
 			</div>
 			<div className='rounded-xl p-1 flex items-center bg-primary'>
