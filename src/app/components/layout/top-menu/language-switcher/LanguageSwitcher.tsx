@@ -2,18 +2,22 @@
 import { usePathname, useRouter } from '@/i18n/navigation'
 import { useLocale } from 'next-intl'
 import Image from 'next/image'
-import { useMemo } from 'react'
+import { useParams } from 'next/navigation'
+import { useMemo, useTransition } from 'react'
 import { LANGUAGES } from './languages.data'
 
 export function LanguageSwitcher() {
 	const router = useRouter()
 	const pathname = usePathname()
 	const locale = useLocale()
+	const params = useParams()
+	const [isPending, startTransition] = useTransition()
 
 	const toggleHandler = () => {
 		const newLanguage = locale === 'ru' ? 'en' : 'ru'
-		router.replace(pathname, { locale: newLanguage })
-		router.refresh()
+		startTransition(() => {
+			router.replace({ pathname, query: params }, { locale: newLanguage })
+		})
 	}
 
 	const language = useMemo(() => {
